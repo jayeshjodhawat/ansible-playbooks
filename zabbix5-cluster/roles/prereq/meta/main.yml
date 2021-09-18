@@ -1,0 +1,4 @@
+galaxy_info:
+  author: Jayesh Jodhawat
+  description: Role to setup prereqs for zabbix 5 cluster installation
+  min_ansible_version: 2.1

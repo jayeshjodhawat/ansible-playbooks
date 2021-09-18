@@ -1,0 +1,23 @@
+---
+all:
+  children:
+    zabbix_servers:
+      hosts:
+        192.168.0.111:
+        192.168.0.112:
+        192.168.0.113:
+      vars:
+        vip: 192.168.0.110
+        time_zone: "Asia/Dubai"
+        db_host: ""
+        db_name: "zabbix"
+        db_user: "svc_zabbix"
+        db_password: "change-it"
+        ha_username: "hacluster"
+        ha_password: "change-it"
+        zabbix_cache_size: "1G"
+        zabbix_history_cache_size: "512M"
+        zabbix_trend_cache_size: "128M"
+        zabbix_value_cache_size: "512M"
+        zabbix_start_pollers: 5
+        zabbix_start_trappers: 5

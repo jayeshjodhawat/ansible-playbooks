@@ -1,0 +1,6 @@
+---
+- hosts: zabbix_servers
+  roles:
+    - zabbix-server
+    # - zabbix-agent2
+    # - ha-cluster

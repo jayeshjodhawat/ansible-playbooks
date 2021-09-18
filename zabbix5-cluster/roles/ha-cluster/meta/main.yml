@@ -1,0 +1,4 @@
+galaxy_info:
+  author: Jayesh Jodhawat
+  description: Role to setup pacemaker and corosync cluster
+  min_ansible_version: 2.1

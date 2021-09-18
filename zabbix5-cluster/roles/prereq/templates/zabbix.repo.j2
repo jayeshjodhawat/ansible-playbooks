@@ -1,0 +1,8 @@
+{% for repo in repos %}
+[{{ repo.repo_id }}]
+name={{ repo.repo_name }}
+baseurl={{ repo.baseurl }}
+enabled={{ repo.enabled }}
+gpgcheck={{ repo.gpgcheck }}
+
+{% endfor %}

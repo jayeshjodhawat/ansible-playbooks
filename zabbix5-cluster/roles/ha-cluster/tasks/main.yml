@@ -1,0 +1,22 @@
+---
+# tasks file for ha-cluster
+- name: Install ha cluster packages
+  ansible.buitin.package:
+    state: present
+    name:
+      - pcs
+      - pacemake
+      - corosync 
+  notify: restart pcsd
+
+- name: Set hacluster use password
+  ansible.builtin.user:
+    name: {{ ha_username }}
+    password: {{ ha_password | password_hash('sha512') }}
+
+- name: Authenticate cluster nodes
+  ansible.builtin.command: pcs cluster auth -u {{ ha_username }} -p {{ ha_password }} {% for ip in groups[zabbix_servers] %} {{ ip }} {% endfor %}
+  no_log: true
+
+- name: Create cluster
+  ansible.builtin.command: pcs cluster setup −−name zabbix_cluster {% for ip in groups[zabbix_servers] %} {{ ip }} {% endfor %} −force

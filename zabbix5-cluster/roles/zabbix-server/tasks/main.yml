@@ -1,0 +1,47 @@
+---
+# tasks file for zabbix-server
+- name: Install zabbix-agent2
+  ansible.buitin.package:
+    state: present
+    name:
+      - httpd
+      - mod_ssl
+      - zabbix-web-mysql-scl
+      - zabbix-apache-conf-scl
+      - zabbix-server-mysql
+      - zabbix-agent2
+      - zabbix-sender
+      - mariadb
+
+- name: Copy zabbix.conf file to php-fpm config dir
+  ansible.buitin.template:
+    src: zabbix.conf.j2
+    dest: /etc/opt/rh/rh-php72/php-fpm.d/zabbix.conf
+    owner: root
+    group: root
+    chmod: 644
+
+- name: Copy zabbix-server configuration file
+  ansible.buitin.template:
+    src: zabbix_server.conf.j2
+    dest: /etc/zabbix/zabbix_server.conf
+    owner: root
+    group: zabbix
+    chmod: 600
+
+- name: Copy zabbix-agent2 configuration file
+  ansible.buitin.template:
+    src: zabbix_agent2.conf.j2
+    dest: /etc/zabbix/zabbix_agent2.conf
+    owner: root
+    group: root
+    chmod: 600
+
+- name: Copy zabbix.conf.php file
+  ansible.buitin.template:
+    src: zabbix.conf.php.j2
+    dest: /etc/zabbix/web/zabbix.conf.php
+    owner: apache
+    group: apache
+    chmod: 600
+  notify: restart zabbix-agent2

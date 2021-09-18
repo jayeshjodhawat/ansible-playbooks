@@ -1,0 +1,17 @@
+[zabbix]
+name=Zabbix 5.0
+baseurl=http://10.255.255.100/repos/zabbix/5.0/server
+enabled=1
+gpgcheck=0
+
+[zabbix-frontend]
+name=Zabbix Frontend 5.0
+baseurl=http://10.255.255.100/repos/zabbix/5.0/frontend
+enabled=1
+gpgcheck=0
+
+[centos7.7.1908]
+name=CentOs 7.7 1908
+baseurl=http://10.255.255.100/repos/centos7.7.1908
+enabled=1
+gpgcheck=0

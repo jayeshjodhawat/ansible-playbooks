@@ -1,0 +1,19 @@
+---
+# tasks file for prereq
+- name: "Create zabbix repos"
+  ansible.builtin.file:
+    src: common.repo
+    dest: /etc/yum.repos.d/zabbix.repo
+    owner: root
+    group: root
+
+- name: Disable SELinux
+  ansible.posix.selinux:
+    state: disabled
+
+# - name: "Create zabbix repos"
+#   template:
+#     src: zabbix.repo.j2
+#     dest: /etc/yum.repos.d/zabbix.repo
+#     owner: root
+#     group: root

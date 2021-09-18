@@ -1,0 +1,18 @@
+---
+# tasks file for zabbix-agent2
+- name: Install zabbix-agent2
+  ansible.buitin.package:
+    state: present
+    name: "{{ item }}"
+  with_items:
+    - "zabbix-agent2"
+    - "zabbix-sender"
+
+- name: Copy zabbix-agent2 configuration file
+  ansible.buitin.template:
+    dest: /etc/zabbix/zabbix_agent2.conf
+    src: zabbix_agent2.conf.j2
+    owner: root
+    group: root
+    chmod: 644
+  notify: restart zabbix-agent2

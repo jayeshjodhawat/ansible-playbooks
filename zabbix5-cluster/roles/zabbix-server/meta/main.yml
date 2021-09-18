@@ -1,0 +1,4 @@
+galaxy_info:
+  author: Jayesh Jodhawat
+  description: Role to install and setup zabbix 5 server and agent
+  min_ansible_version: 2.1
